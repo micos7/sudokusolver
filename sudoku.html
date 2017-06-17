@@ -15,6 +15,8 @@
             <table class="table table-condensed table-bordered table-hover text-center"></table>
             
               <input type="button" class="btn btn-success pull-right btn-block" value="Solve">
+
+              <input type="button" class="btn btn-success pull-right btn-block" value="Reset">
            
         
           </form>
@@ -108,6 +110,15 @@ function test() {
   }
 }
 
+function reset() {
+  var form = document.querySelector('form#sudoku'),
+      i;
+  for (i = 0; i < 81; i++) {
+    //get the form values
+    form[i].value ='';
+  }
+}
+
 function populateTable() {
   var i, j, tr, td, input,
       table = document.querySelector('form#sudoku table'),
@@ -118,7 +129,7 @@ function populateTable() {
     tbody.appendChild(tr);
     for (j = 0; j < 9; j++) {            
       td = document.createElement('td');
-      td.className += " text-center";
+      td.className += "text-center";
       tr.appendChild(td);
       input = document.createElement('input');
       input.type = 'text';
@@ -128,6 +139,8 @@ function populateTable() {
   }
   document.querySelector('input[value=Solve]')
     .addEventListener('click', test);
+  document.querySelector('input[value=Solve]')
+    .addEventListener('click', reset);
 }
 
 
